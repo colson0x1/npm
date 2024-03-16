@@ -1,13 +1,26 @@
 /* Uses the 'searchPackages' function to fetch data */
 // Gets some data for SearchPage component
+import type { PackageSummary } from '../../api/types/packageSummary';
 import { searchPackages } from '../../api/queries/searchPackages';
+
+// Single source of truth that tells us exactly what is SearchLoaderResult
+// object is
+export interface SearchLoaderResult {
+  searchResults: PackageSummary[];
+}
 
 // This loader function can make multiple different requests.
 // And if we make all those requests and called fetch directly inside
 // of this function, it just ends up being really confusing and hard to read.
 // So, we extract that request logic into the separate queries/searchPackages.ts
 // which will serve us and makes a lot easier for us to orgainze our code!
-export async function searchLoader({ request }: { request: Request }) {
+
+// This function returns a Promise that will resolve with SearchLoaderResult object
+export async function searchLoader({
+  request,
+}: {
+  request: Request;
+}): Promise<SearchLoaderResult> {
   // It's gonna receive some information about the route that we're
   // currently navigating to, it's gonna make a request, return some data.
   // We define loader, and the Browser Router is gonna automatically
