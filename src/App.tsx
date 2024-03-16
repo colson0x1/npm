@@ -44,11 +44,6 @@ const router = createBrowserRouter([
           }
           // console.log('Search term:', term);
 
-          const res = await fetch(
-            `https://registry.npmjs.org/-/v1/search?text=${term}`,
-          );
-          const data = await res.json();
-
           return data.objects;
         },
       },
