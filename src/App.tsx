@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './pages/Root';
 import HomePage from './pages/HomePage';
-import SearchPage from './pages/SearchPage';
+import SearchPage from './pages/search/SearchPage';
+import { searchLoader } from './pages/search/searchLoader';
 import DetailsPage from './pages/DetailsPage';
 
 /* createBrowserRouter is like an object which is going to look at the
@@ -20,32 +21,7 @@ const router = createBrowserRouter([
       {
         path: '/search',
         element: <SearchPage />,
-        loader: async ({ request }) => {
-          // It's gonna receive some information about the route that we're
-          // currently navigating to, it's gonna make a request, return some data.
-          // We define loader, and the Browser Router is gonna automatically
-          // call that and expose this data to our Search Page component
-          // `request` object is going to include some information about the user
-          // kind of coming to this path '/search'
-          /* console.log(request); */
-
-          // extract url property: represents what a user is trying to navigate to
-          // we're going to build a URL object out of it
-          // Its a built in feature from browser which allows us to extract
-          // certain pieces of infromation out of a url.
-          // One piece of information we can extract out is the `searchParams`
-          // That's the query string at the very end of the url
-          const { searchParams } = new URL(request.url);
-          // Taking searchParams object and ask for just the term part of it
-          const term = searchParams.get('term');
-
-          if (!term) {
-            throw new Error('Search term must be provided');
-          }
-          // console.log('Search term:', term);
-
-          return data.objects;
-        },
+        loader: searchLoader,
       },
       {
         path: '/packages/:name',
