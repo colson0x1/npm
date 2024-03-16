@@ -2,7 +2,7 @@ import type { PackageDetails } from '../../api/types/packageDetails';
 import { getFeaturedPackages } from '../../api/queries/getFeaturedPackages';
 
 export interface HomeLoaderResult {
-  featuredPackages: PackageDetails;
+  featuredPackages: PackageDetails[];
 }
 
 export async function homeLoader(): Promise<HomeLoaderResult> {
