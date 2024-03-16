@@ -1,5 +1,11 @@
-/* import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; */
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+/* 3 ways to navigate a user around:
+ * i. show a link
+ * ii. based on an event
+ * iii. based on form submission
+ * */
 
 /* useNavigate hook works in kind of surprising fashion.we call useNavigate
  * inside of our component, and this is gonna give us back a function that
@@ -8,7 +14,7 @@ import { useNavigate } from 'react-router-dom'; */
  * user over to some other route in our application
  */
 
-/* export default function SearchInput() {
+export default function SearchInput() {
   const [term, setTerm] = useState('');
   const navigate = useNavigate();
 
@@ -26,7 +32,7 @@ import { useNavigate } from 'react-router-dom'; */
       <input value={term} onChange={(e) => setTerm(e.target.value)} />
     </form>
   );
-} */
+}
 
 /* Third way to handle form submission with React Router
  * Based on form submission
@@ -40,6 +46,7 @@ import { useNavigate } from 'react-router-dom'; */
  * personally like to go with more traditional route here.
  */
 
+/*
 import { Form } from 'react-router-dom';
 
 export default function SearchInput() {
@@ -49,3 +56,4 @@ export default function SearchInput() {
     </Form>
   );
 }
+*/
