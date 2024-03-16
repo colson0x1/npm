@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <div className='flex items-center justify-between px-4 border-b h-14'>
       <div className='flex items-center space-x-2 text-sm'>
-        <Link to='/' className='text-lg font-bold text-red-600'>
+        <Link to='/' className='text-lg font-bold text-black'>
           NPM Registry
         </Link>
       </div>
