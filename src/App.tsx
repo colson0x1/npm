@@ -3,7 +3,8 @@ import Root from './pages/Root';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/search/SearchPage';
 import { searchLoader } from './pages/search/searchLoader';
-import DetailsPage from './pages/DetailsPage';
+import DetailsPage from './pages/details/DetailsPage';
+import { detailsLoader } from './pages/details/detailsLoader';
 
 /* createBrowserRouter is like an object which is going to look at the
  * current path of the user is visiting and decide on which of these 3
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       {
         path: '/packages/:name',
         element: <DetailsPage />,
+        loader: detailsLoader,
       },
     ],
   },
