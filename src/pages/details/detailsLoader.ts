@@ -1,3 +1,4 @@
+import type { PackageDetails } from '../../api/types/packageDetails';
 import type { Params } from 'react-router-dom';
 import { getPackage } from '../../api/queries/getPackage';
 
@@ -7,7 +8,13 @@ interface LoaderArgs {
   params: Params;
 }
 
-export async function detailsLoader({ params }: LoaderArgs) {
+export interface DetailsLoaderResult {
+  details: PackageDetails;
+}
+
+export async function detailsLoader({
+  params,
+}: LoaderArgs): Promise<DetailsLoaderResult> {
   // console.log('details loader executed :)');
 
   const { name } = params;
